@@ -13,7 +13,8 @@ public class Xero_TestCase1 {
 		// TODO Auto-generated method stub
 		
 		//login();
-		incorrectpassword();
+		//incorrectpassword();
+		incorrectEmail();
         
 
 	}
@@ -59,5 +60,28 @@ public class Xero_TestCase1 {
         Login.click();
 		
 	}
+	
+public static void incorrectEmail(){
+		
+		System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+		driver=new ChromeDriver();
+        driver.get("https://www.xero.com/us/");
+        driver.manage().window().maximize();
+        
+        WebElement Clicklogintab=driver.findElement(By.xpath("//a[@class='btn btn-tertiary-alt global-ceiling-bar-btn']"));
+        Clicklogintab.click();
+        
+        WebElement Email=driver.findElement(By.xpath("//input[@id='email']"));
+        Email.sendKeys("abc@gmail.com");
+        
+        WebElement Password=driver.findElement(By.xpath("//input[@id='password']"));
+        Password.sendKeys("Indiagod@1");
+        
+        WebElement Login=driver.findElement(By.xpath("//button[@id='submitButton']"));
+        Login.click();
+		
+	}
+	
+	
 
 }
