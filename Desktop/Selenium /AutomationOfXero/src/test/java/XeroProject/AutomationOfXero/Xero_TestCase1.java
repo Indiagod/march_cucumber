@@ -4,18 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class Xero_TestCase1 {
 	
 	static WebDriver driver;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 		//login();
 		//incorrectpassword();
 		//incorrectEmail();
-		forgotPassword();
+		//forgotPassword();
+		freetrial();
         
 
 	}
@@ -105,6 +108,42 @@ public class Xero_TestCase1 {
   	}
 
 
+      public static void freetrial() throws InterruptedException{
+    	  
+    	  System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+    		driver=new ChromeDriver();
+            driver.get("https://www.xero.com/us/");
+            driver.manage().window().maximize();
+            
+            WebElement freetrial=driver.findElement(By.xpath("//a[@class='btn btn-primary global-ceiling-bar-btn']"));
+            freetrial.click();
+            
+            WebElement Firstname=driver.findElement(By.xpath("//input[@name='FirstName']"));
+            Firstname.sendKeys("abc");
+            
+            WebElement lastname=driver.findElement(By.xpath("//input[@name='LastName']"));
+            lastname.sendKeys("def");
+    	  
+            WebElement email=driver.findElement(By.xpath("//input[@name='EmailAddress']"));
+            email.sendKeys("abc@gmail.com");
+            
+            WebElement phoneNo=driver.findElement(By.xpath("//input[@name='PhoneNumber']"));
+            phoneNo.sendKeys("123456789");
+            
+            WebElement country=driver.findElement(By.xpath("//select[@name='LocationCode']"));
+            Select countrydropdown=new Select(country);
+            countrydropdown.selectByVisibleText("United States");
+            
+            Thread.sleep(8000);
+            		
+            WebElement Termsandconditions=driver.findElement(By.xpath("//input[@name='TermsAccepted']"));
+            Termsandconditions.click();
+            
+            WebElement GetStarted=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
+            GetStarted.click();
+     
+           
+      }
 	
 	
 
