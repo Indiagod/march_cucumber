@@ -14,14 +14,16 @@ public class Xero_TestCase1 {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
-		//login();
+		login();
 		//incorrectpassword();
 		//incorrectEmail();
 		//forgotPassword();
 		//freetrial();
 		//freetrialwithoutfilldetails();
-		termsofuse();
-
+		//termsofuse();
+		//fullofferdetails();
+		//accountantorbookkeeper();
+		testalltab();
 	}
 	
 	public static void login(){
@@ -211,6 +213,88 @@ public class Xero_TestCase1 {
            }
            
  
+           public static void fullofferdetails() throws InterruptedException{
+        	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+       		   driver=new ChromeDriver();
+               driver.get("https://www.xero.com/us/");
+               driver.manage().window().maximize();
+               
+               WebElement freetrial=driver.findElement(By.xpath("//a[@class='btn btn-primary global-ceiling-bar-btn']"));
+               freetrial.click();
+               
+               Thread.sleep(3000);
+               WebElement offerdetails=driver.findElement(By.xpath("//a[contains(text(),'offer details')]"));
+               offerdetails.click();
+               
+               Thread.sleep(5000);
+               driver.quit();
+           }
+           
+           public static void accountantorbookkeeper() throws InterruptedException{
+        	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+       		   driver=new ChromeDriver();
+               driver.get("https://www.xero.com/us/");
+               driver.manage().window().maximize();
+               
+               WebElement freetrial=driver.findElement(By.xpath("//a[@class='btn btn-primary global-ceiling-bar-btn']"));
+               freetrial.click();
+               
+               Thread.sleep(3000);
+               WebElement accountandbookkkeeper=driver.findElement(By.xpath("//a[contains(text(),'accountant or bookkeeper')]"));
+               accountandbookkkeeper.click();
+               
+               Thread.sleep(5000);
+               driver.quit();
+           }
+           
+           public static void testalltab() throws InterruptedException{
+        	   Thread.sleep(2000);
+        	   WebElement dashboard=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/header[1]/div[1]/ol[1]/li[1]/a[1]"));
+        	   dashboard.click();
+        	   
+        	   Thread.sleep(2000);
+        	   WebElement Accounting=driver.findElement(By.xpath("//button[contains(text(),'Accounting')]"));
+        	   Actions accountdropdown=new Actions(driver);
+        	   accountdropdown.moveToElement(Accounting).click().build().perform();
+        	   
+        	   Thread.sleep(2000);
+        	   WebElement Reports=driver.findElement(By.xpath("//a[contains(text(),'Reports')]"));
+        	   Reports.click();
+        	   
+        	   Thread.sleep(2000);
+        	   WebElement Contacts=driver.findElement(By.xpath("//button[contains(text(),'Contacts')]"));
+        	   Contacts.click();
+        	   
+        	   Thread.sleep(2000);
+               WebElement Usercompany=driver.findElement(By.xpath("//div[@class='xrh-appbutton--body']"));
+               Actions Usercompanydropdown=new Actions(driver);
+               Usercompanydropdown.moveToElement(Usercompany).click().build().perform();
+               
+               Thread.sleep(2000);
+               WebElement setting=driver.findElement(By.xpath("//a[contains(text(),'Settings')]"));
+               setting.click();
+               
+               Thread.sleep(2000);
+               WebElement Plustab=driver.findElement(By.xpath("//li[1]//button[1]//div[1]"));
+               Plustab.click();
+               
+               Thread.sleep(2000);
+               WebElement Notification=driver.findElement(By.xpath("//li[3]//button[1]//div[1]"));
+               Notification.click();
+               
+               Thread.sleep(2000);
+               WebElement search=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/header[1]/div[1]/ol[2]/li[2]/button[1]/div[1]"));
+               search.click();
+               
+               Thread.sleep(2000);
+               WebElement help=driver.findElement(By.xpath("//button[@class='xrh-button xrh-addon--iconbutton xrh-header--iconbutton xrh-focusable--parent xrh-focusable--parent-is-active']//*[@class='xrh-icon xrh-icon-svg']"));
+               help.click();
+               
+               
+               
+               
+           }
+           
 	
 
 }
