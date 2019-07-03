@@ -19,7 +19,8 @@ public class Xero_TestCase1 {
 		//incorrectEmail();
 		//forgotPassword();
 		//freetrial();
-		freetrialwithoutfilldetails();
+		//freetrialwithoutfilldetails();
+		termsofuse();
 
 	}
 	
@@ -186,7 +187,30 @@ public class Xero_TestCase1 {
            
             driver.quit();
             
- }
+            }
+ 
+           public static void termsofuse() throws InterruptedException{
+        	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+       		   driver=new ChromeDriver();
+               driver.get("https://www.xero.com/us/");
+               driver.manage().window().maximize();
+               
+               WebElement freetrial=driver.findElement(By.xpath("//a[@class='btn btn-primary global-ceiling-bar-btn']"));
+               freetrial.click();
+               
+               Thread.sleep(3000);
+               WebElement termsofuse=driver.findElement(By.xpath("//a[contains(text(),'Terms of Use')]"));
+               termsofuse.click();
+               
+               Thread.sleep(5000);
+               WebElement privacypolicy=driver.findElement(By.xpath("//a[contains(text(),'Privacy')]"));
+               privacypolicy.click();
+               
+               driver.quit();
+        	   
+           }
+           
+ 
 	
 
 }
