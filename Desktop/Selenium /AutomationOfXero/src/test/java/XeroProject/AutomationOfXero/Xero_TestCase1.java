@@ -14,7 +14,8 @@ public class Xero_TestCase1 {
 		
 		//login();
 		//incorrectpassword();
-		incorrectEmail();
+		//incorrectEmail();
+		forgotPassword();
         
 
 	}
@@ -61,7 +62,7 @@ public class Xero_TestCase1 {
 		
 	}
 	
-public static void incorrectEmail(){
+      public static void incorrectEmail(){
 		
 		System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
 		driver=new ChromeDriver();
@@ -80,7 +81,30 @@ public static void incorrectEmail(){
         WebElement Login=driver.findElement(By.xpath("//button[@id='submitButton']"));
         Login.click();
 		
-	}
+	 }
+      
+      public static void forgotPassword(){
+  		
+  		System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+  		driver=new ChromeDriver();
+          driver.get("https://www.xero.com/us/");
+          driver.manage().window().maximize();
+          
+          WebElement Clicklogintab=driver.findElement(By.xpath("//a[@class='btn btn-tertiary-alt global-ceiling-bar-btn']"));
+          Clicklogintab.click();
+          
+          WebElement ForgotPassword=driver.findElement(By.xpath("//a[@class='forgot-password-advert']"));
+          ForgotPassword.click();
+          
+          WebElement Email=driver.findElement(By.xpath("//input[@id='UserName']"));
+          Email.sendKeys("pradeepa.prabhu1006@gmail.com");
+          
+          WebElement SendEmailButton=driver.findElement(By.xpath("//span[@class='text']"));
+          SendEmailButton.click();
+  		
+  	}
+
+
 	
 	
 
