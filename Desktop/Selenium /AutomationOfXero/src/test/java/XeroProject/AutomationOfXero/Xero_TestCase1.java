@@ -18,8 +18,8 @@ public class Xero_TestCase1 {
 		//incorrectpassword();
 		//incorrectEmail();
 		//forgotPassword();
-		freetrial();
-        
+		//freetrial();
+		freetrialwithoutfilldetails();
 
 	}
 	
@@ -141,10 +141,52 @@ public class Xero_TestCase1 {
             
             WebElement GetStarted=driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
             GetStarted.click();
-     
-           
       }
 	
+ public static void freetrialwithoutfilldetails() throws InterruptedException{
+    	  
+    	  System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+    		driver=new ChromeDriver();
+            driver.get("https://www.xero.com/us/");
+            driver.manage().window().maximize();
+            
+            WebElement freetrial=driver.findElement(By.xpath("//a[@class='btn btn-primary global-ceiling-bar-btn']"));
+            freetrial.click();
+            
+            Thread.sleep(5000);
+            WebElement gettingStarted=driver.findElement(By.xpath("//span[@class='g-recaptcha-submit']"));
+            gettingStarted.click();
+            
+            Thread.sleep(5000);
+            WebElement email=driver.findElement(By.xpath("//input[@name='EmailAddress']"));
+            email.sendKeys("abc.com@gmail123");
+            
+            Thread.sleep(5000);
+            WebElement Firstname=driver.findElement(By.xpath("//input[@name='FirstName']"));
+            Firstname.sendKeys("abc");
+            
+            WebElement lastname=driver.findElement(By.xpath("//input[@name='LastName']"));
+            lastname.sendKeys("def");
+    	  
+            WebElement email1=driver.findElement(By.xpath("//input[@name='EmailAddress']"));
+            email1.clear();
+            email1.sendKeys("abc@gmail.com");
+            
+            WebElement phoneNo=driver.findElement(By.xpath("//input[@name='PhoneNumber']"));
+            phoneNo.sendKeys("123456789");
+            
+            WebElement country=driver.findElement(By.xpath("//select[@name='LocationCode']"));
+            Select countrydropdown=new Select(country);
+            countrydropdown.selectByVisibleText("United States");
+            
+            Thread.sleep(8000);
+         
+            WebElement Gettingstarted1=driver.findElement(By.xpath("//span[@class='g-recaptcha-submit']"));
+            Gettingstarted1.click();
+           
+            driver.quit();
+            
+ }
 	
 
 }
