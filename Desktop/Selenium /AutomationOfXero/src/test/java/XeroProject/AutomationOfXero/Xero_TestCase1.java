@@ -23,7 +23,8 @@ public class Xero_TestCase1 {
 		//termsofuse();
 		//fullofferdetails();
 		//accountantorbookkeeper();
-		testalltab();
+		//testalltab();
+		logout();
 	}
 	
 	public static void login(){
@@ -290,10 +291,23 @@ public class Xero_TestCase1 {
                WebElement help=driver.findElement(By.xpath("//button[@class='xrh-button xrh-addon--iconbutton xrh-header--iconbutton xrh-focusable--parent xrh-focusable--parent-is-active']//*[@class='xrh-icon xrh-icon-svg']"));
                help.click();
                
-               
-               
-               
            }
+           
+           public static void logout(){
+        	   WebElement logout=driver.findElement(By.xpath("//abbr[@class='xrh-avatar xrh-avatar-color-8']"));
+        	   Actions logoutdropdown=new Actions(driver);
+        	   logoutdropdown.moveToElement(logout).click().build().perform();
+        	   
+        	   WebElement logoutclick=driver.findElement(By.xpath("//div[@class='xrh-dropdown-layout xrh-addon--dropdown xrh-dropdown-is-open xrh-dropdown-is-opening xrh-dropdown-positionright']//a[@class='xrh-verticalmenuitem--body'][contains(text(),'Log out')]"));
+        	   logoutclick.click();
+        	   
+        	   WebElement usernamefield=driver.findElement(By.xpath("//input[@id='email']"));
+        	   System.out.println(usernamefield.isDisplayed());
+        	
+        	   driver.quit();
+           }
+           
+           
            
 	
 
