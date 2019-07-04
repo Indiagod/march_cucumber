@@ -14,7 +14,7 @@ public class Xero_TestCase1 {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
-		login();
+		//login();
 		//incorrectpassword();
 		//incorrectEmail();
 		//forgotPassword();
@@ -25,7 +25,8 @@ public class Xero_TestCase1 {
 		//accountantorbookkeeper();
 		//testalltab();
 		//logout();
-		profile();
+		//profile();
+		Orginizationdetails();
 	}
 	
 	public static void login(){
@@ -354,6 +355,63 @@ public class Xero_TestCase1 {
         	   driver.quit();
         	 
            }
+           
+           public static void Orginizationdetails() throws InterruptedException{
+        	   
+        	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+       		driver=new ChromeDriver();
+               driver.get("https://www.xero.com/us/");
+               driver.manage().window().maximize();
+               
+               WebElement Clicklogintab=driver.findElement(By.xpath("//a[@class='btn btn-tertiary-alt global-ceiling-bar-btn']"));
+               Clicklogintab.click();
+               
+               WebElement Email=driver.findElement(By.xpath("//input[@id='email']"));
+               Email.sendKeys("gopala.anumanchipalli@gmail.com");
+               
+               WebElement Password=driver.findElement(By.xpath("//input[@id='password']"));
+               Password.sendKeys("password12");
+               
+               WebElement Login=driver.findElement(By.xpath("//button[@id='submitButton']"));
+               Login.click();
+               
+               WebElement AddanOrganization=driver.findElement(By.xpath("//a[@id='ext-gen1043']"));
+               AddanOrganization.click();
+               
+               Thread.sleep(5000);
+               WebElement nameofOrganization=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]"));
+               nameofOrganization.sendKeys("Self");
+               
+               Thread.sleep(3000);
+               WebElement CountryofTaxPaid=driver.findElement(By.xpath("//body[@class='xui-body xui-background-white']//div[@id='root']//div//div//div[2]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+               Actions dropdown=new Actions(driver);
+               dropdown.moveToElement(CountryofTaxPaid).click().build().perform();
+               
+               Thread.sleep(3000);
+               WebElement Country=driver.findElement(By.xpath("//li[@id='CNTRY/US']//span[@class='xui-pickitem--text']"));
+               Country.click();
+               
+               Thread.sleep(3000);
+               WebElement Timezone=driver.findElement(By.xpath("//div[3]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+               Actions TimeZoneDropdown=new Actions(driver);
+               TimeZoneDropdown.moveToElement(Timezone).click().build().perform();
+               
+               Thread.sleep(3000);
+               WebElement Time=driver.findElement(By.xpath("//span[contains(text(),'(UTC-08:00) Pacific Time (US & Canada)')]"));
+               Time.click();
+               
+               Thread.sleep(3000);
+               WebElement JobType=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/input[1]"));
+               JobType.sendKeys("Accounting");
+               
+               Thread.sleep(3000);
+               WebElement StartTrial=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--primary xui-actions--button-spacing xui-button-main xui-button-medium']"));
+               StartTrial.click();
+               
+               driver.quit();  
+        	   
+           }
+           
            
            
            
