@@ -24,7 +24,8 @@ public class Xero_TestCase1 {
 		//fullofferdetails();
 		//accountantorbookkeeper();
 		//testalltab();
-		logout();
+		//logout();
+		profile();
 	}
 	
 	public static void login(){
@@ -306,6 +307,55 @@ public class Xero_TestCase1 {
         	
         	   driver.quit();
            }
+           
+           public static void profile() throws InterruptedException{
+        	   Thread.sleep(3000);
+        	   WebElement usernamenavbutton=driver.findElement(By.xpath("//span[@class='xrh-appbutton--text']"));
+        	   Actions usernamenavbuttondropdown=new Actions(driver);
+        	   usernamenavbuttondropdown.moveToElement(usernamenavbutton).click().build().perform();
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement MyXero=driver.findElement(By.xpath("//a[contains(text(),'My Xero')]"));
+        	   MyXero.click();
+        	   
+        	   String primarywindow=driver.getWindowHandle();
+       	       System.out.println("Primary Window:"+primarywindow );
+       	       for(String handle: driver.getWindowHandles()) {
+       	    	System.out.println("No of handle" + handle);
+       	    	driver.switchTo().window(handle);
+       	        }
+        	   
+        	   Thread.sleep(3000);
+        	   System.out.println("My Profile page");
+        	   WebElement usernameMyxero=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/a[1]"));
+        	   Actions usernameMyxerodropdown=new Actions(driver);
+        	   usernameMyxerodropdown.moveToElement(usernameMyxero).click().build().perform();
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement profile=driver.findElement(By.xpath("//li[@class='xn-h-profile-card-navigation-item grid-3 profile']//a[contains(text(),'Profile')]"));
+        	   profile.click();
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement upload=driver.findElement(By.xpath("//div[@id='button-1041']"));
+        	   upload.click();
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement browse=driver.findElement(By.xpath("//input[@id='filefield-1174-button-fileInputEl']"));
+        	   browse.sendKeys("//Users//PrabhuRamasamy//Desktop//Tekarchworks//Image.png");
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement uploadbutton=driver.findElement(By.xpath("//span[@id='button-1178-btnInnerEl']"));
+        	   uploadbutton.click();
+        	   
+        	   Thread.sleep(3000);
+        	   WebElement save=driver.findElement(By.xpath("//span[@id='button-1164-btnInnerEl']"));
+        	   save.click();
+        	   
+        	   driver.quit();
+        	 
+           }
+           
+           
            
            
            
