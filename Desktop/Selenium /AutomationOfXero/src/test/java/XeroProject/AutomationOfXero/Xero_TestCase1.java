@@ -743,9 +743,12 @@ public static void OrginizationdetailsBuyNow() throws InterruptedException{
                  WebElement ConfirmPurchase=driver.findElement(By.xpath("//span[contains(text(),'Confirm Purchase')]"));
                  ConfirmPurchase.click();
                  
+                 driver.quit();
+                 
              }
           
           public static void buyPermiumPlan() throws InterruptedException{
+        	  //Buy Establised Plan
         	  
           	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
          		driver=new ChromeDriver();
@@ -869,6 +872,8 @@ public static void OrginizationdetailsBuyNow() throws InterruptedException{
                  Thread.sleep(3000);
                  WebElement ConfirmPurchase=driver.findElement(By.xpath("//span[contains(text(),'Confirm Purchase')]"));
                  ConfirmPurchase.click();
+                 
+                 driver.quit();
                  
              }
            
