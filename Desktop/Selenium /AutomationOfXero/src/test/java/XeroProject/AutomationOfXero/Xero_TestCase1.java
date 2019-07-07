@@ -29,7 +29,9 @@ public class Xero_TestCase1 {
 		//Orginizationdetails();
 		//OrginizationdetailsBuyNow();
 		//buyStarterPlan();
-		QuickbookUser();
+		 // buyStandardPlan();
+		buyPermiumPlan();
+		//QuickbookUser();
 	}
 	
 	public static void login(){
@@ -557,10 +559,9 @@ public static void OrginizationdetailsBuyNow() throws InterruptedException{
               WebElement BuyNow=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--secondary xui-button-standard xui-button-medium']"));
               BuyNow.click();
               
-             Thread.sleep(5000);
-              WebElement EarlyPlan=driver.findElement(By.xpath("//span[contains(text(),'Early')]"));
+              Thread.sleep(10000);
+              WebElement EarlyPlan=driver.findElement(By.xpath("//section[@id='Early']//div[@class='xui-padding-top xui-padding-left']"));
               EarlyPlan.click();
-             
               
               Thread.sleep(3000);
               WebElement ContinuePayment=driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[4]/div[1]/button[1]/span[1]"));
@@ -583,15 +584,293 @@ public static void OrginizationdetailsBuyNow() throws InterruptedException{
               WebElement SelectState=driver.findElement(By.xpath("//span[contains(text(),'California')]"));
               SelectState.click();
               
-              WebElement ZipCode=driver.findElement(By.xpath(""));
+              WebElement ZipCode=driver.findElement(By.xpath("//input[@id='contactPostalCode']"));
               ZipCode.sendKeys("95051");
               
               Thread.sleep(2000);
               WebElement ContinueToReview=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--primary xui-button-main']"));
               ContinueToReview.click();
               
-        	  
+              Thread.sleep(3000);
+              WebElement creditcard=driver.findElement(By.xpath("//span[contains(text(),'Credit Card')]"));
+              creditcard.click();
+              
+              Thread.sleep(3000);
+              WebElement cardnumber=driver.findElement(By.xpath("//div[@id='stripe-card-number']"));
+              cardnumber.sendKeys("4214 3601 1213 9003");
+              
+              Thread.sleep(3000);
+              WebElement ExpiryDate=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+              ExpiryDate.sendKeys("09/25");
+              
+              Thread.sleep(3000);
+              WebElement ccv=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+              ccv.sendKeys("123");
+              
+              Thread.sleep(3000);
+              WebElement NameOnCard=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+              NameOnCard.sendKeys("John Alexander");
+              
+              Thread.sleep(3000);
+              WebElement ConfirmPurchase=driver.findElement(By.xpath("//span[contains(text(),'Confirm Purchase')]"));
+              ConfirmPurchase.click();
+              
           }
+          
+          public static void buyStandardPlan() throws InterruptedException{
+        	  
+          	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+         		driver=new ChromeDriver();
+                 driver.get("https://www.xero.com/us/");
+                 driver.manage().window().maximize();
+                 
+                 WebElement Clicklogintab=driver.findElement(By.xpath("//a[@class='btn btn-tertiary-alt global-ceiling-bar-btn']"));
+                 Clicklogintab.click();
+                 
+                 WebElement Email=driver.findElement(By.xpath("//input[@id='email']"));
+                 Email.sendKeys("gopala.anumanchipalli@gmail.com");
+                 
+                 WebElement Password=driver.findElement(By.xpath("//input[@id='password']"));
+                 Password.sendKeys("password12");
+                 
+                 WebElement Login=driver.findElement(By.xpath("//button[@id='submitButton']"));
+                 Login.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement Self=driver.findElement(By.xpath("//div[@class='xrh-appbutton--body']"));
+                 Actions SelfDropdown=new Actions(driver);
+                 SelfDropdown.moveToElement(Self).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement MyXero=driver.findElement(By.xpath("//a[contains(text(),'My Xero')]"));
+                 MyXero.click();
+                 
+                 String primarywindow=driver.getWindowHandle();
+         	       System.out.println("Primary Window:"+primarywindow );
+         	       for(String handle: driver.getWindowHandles()) {
+         	    	System.out.println("No of handle" + handle);
+         	    	driver.switchTo().window(handle);
+         	        }
+                 
+                 Thread.sleep(5000);
+                 WebElement AddanOrganization=driver.findElement(By.cssSelector("#ext-gen1043"));
+                 AddanOrganization.click();
+                 
+                 Thread.sleep(5000);
+                 WebElement nameofOrganization=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]"));
+                 nameofOrganization.sendKeys("Self");
+                 
+                 Thread.sleep(3000);
+                 WebElement CountryofTaxPaid=driver.findElement(By.xpath("//body[@class='xui-body xui-background-white']//div[@id='root']//div//div//div[2]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+                 Actions dropdown=new Actions(driver);
+                 dropdown.moveToElement(CountryofTaxPaid).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement Country=driver.findElement(By.xpath("//li[@id='CNTRY/US']//span[@class='xui-pickitem--text']"));
+                 Country.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement Timezone=driver.findElement(By.xpath("//div[3]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+                 Actions TimeZoneDropdown=new Actions(driver);
+                 TimeZoneDropdown.moveToElement(Timezone).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement Time=driver.findElement(By.xpath("//span[contains(text(),'(UTC-08:00) Pacific Time (US & Canada)')]"));
+                 Time.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement JobType=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/input[1]"));
+                 JobType.sendKeys("Accounting");
+                 
+                 Thread.sleep(3000);
+                 WebElement BuyNow=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--secondary xui-button-standard xui-button-medium']"));
+                 BuyNow.click();
+                 
+                 Thread.sleep(5000);
+                 WebElement StandardPlan=driver.findElement(By.xpath("//div[@class='xui-padding-top xui-padding-left plancard-popular']//label[@class='xui-styledcheckboxradio']"));
+                 StandardPlan.click();
+                 
+                 
+                 Thread.sleep(3000);
+                 WebElement ContinuePayment=driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[4]/div[1]/button[1]/span[1]"));
+                 ContinuePayment.click();
+                 
+                 Thread.sleep(2000);
+                 WebElement StreetAddress=driver.findElement(By.xpath("//input[@id='contactAddress']"));
+                 StreetAddress.sendKeys("3450 Granada Ave");
+                 
+                 Thread.sleep(2000);
+                 WebElement city=driver.findElement(By.xpath("//input[@id='contactCity']"));
+                 city.sendKeys("Santa Clara");
+                 
+                 Thread.sleep(2000);
+                 WebElement state=driver.findElement(By.xpath("//div[@id='postalAddress']//button[@class='xui-button xui-select--button xui-button-standard']"));
+                 Actions Statedropdown=new Actions(driver);
+                 Statedropdown.moveToElement(state).click().build().perform();
+                 
+                 Thread.sleep(2000);
+                 WebElement SelectState=driver.findElement(By.xpath("//span[contains(text(),'California')]"));
+                 SelectState.click();
+                 
+                 WebElement ZipCode=driver.findElement(By.xpath("//input[@id='contactPostalCode']"));
+                 ZipCode.sendKeys("95051");
+                 
+                 Thread.sleep(2000);
+                 WebElement ContinueToReview=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--primary xui-button-main']"));
+                 ContinueToReview.click();
+                
+                 Thread.sleep(3000);
+                 WebElement creditcard=driver.findElement(By.xpath("//span[contains(text(),'Credit Card')]"));
+                 creditcard.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement cardnumber=driver.findElement(By.xpath("//div[@id='stripe-card-number']"));
+                 cardnumber.sendKeys("4214 3601 1213 9003");
+                 
+                 Thread.sleep(3000);
+                 WebElement ExpiryDate=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 ExpiryDate.sendKeys("09/25");
+                 
+                 Thread.sleep(3000);
+                 WebElement cvc=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 cvc.sendKeys("123");
+                 
+                 Thread.sleep(3000);
+                 WebElement NameOnCard=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 NameOnCard.sendKeys("John Alexander");
+                 
+                 Thread.sleep(3000);
+                 WebElement ConfirmPurchase=driver.findElement(By.xpath("//span[contains(text(),'Confirm Purchase')]"));
+                 ConfirmPurchase.click();
+                 
+             }
+          
+          public static void buyPermiumPlan() throws InterruptedException{
+        	  
+          	   System.setProperty("webdriver.chrome.driver", "//Users//PrabhuRamasamy//Desktop//Tekarchworks//drivers//chromedriver");
+         		driver=new ChromeDriver();
+                 driver.get("https://www.xero.com/us/");
+                 driver.manage().window().maximize();
+                 
+                 WebElement Clicklogintab=driver.findElement(By.xpath("//a[@class='btn btn-tertiary-alt global-ceiling-bar-btn']"));
+                 Clicklogintab.click();
+                 
+                 WebElement Email=driver.findElement(By.xpath("//input[@id='email']"));
+                 Email.sendKeys("gopala.anumanchipalli@gmail.com");
+                 
+                 WebElement Password=driver.findElement(By.xpath("//input[@id='password']"));
+                 Password.sendKeys("password12");
+                 
+                 WebElement Login=driver.findElement(By.xpath("//button[@id='submitButton']"));
+                 Login.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement Self=driver.findElement(By.xpath("//div[@class='xrh-appbutton--body']"));
+                 Actions SelfDropdown=new Actions(driver);
+                 SelfDropdown.moveToElement(Self).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement MyXero=driver.findElement(By.xpath("//a[contains(text(),'My Xero')]"));
+                 MyXero.click();
+                 
+                 String primarywindow=driver.getWindowHandle();
+         	       System.out.println("Primary Window:"+primarywindow );
+         	       for(String handle: driver.getWindowHandles()) {
+         	    	System.out.println("No of handle" + handle);
+         	    	driver.switchTo().window(handle);
+         	        }
+                 
+                 Thread.sleep(5000);
+                 WebElement AddanOrganization=driver.findElement(By.cssSelector("#ext-gen1043"));
+                 AddanOrganization.click();
+                 
+                 Thread.sleep(5000);
+                 WebElement nameofOrganization=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]"));
+                 nameofOrganization.sendKeys("Self");
+                 
+                 Thread.sleep(3000);
+                 WebElement CountryofTaxPaid=driver.findElement(By.xpath("//body[@class='xui-body xui-background-white']//div[@id='root']//div//div//div[2]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+                 Actions dropdown=new Actions(driver);
+                 dropdown.moveToElement(CountryofTaxPaid).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement Country=driver.findElement(By.xpath("//li[@id='CNTRY/US']//span[@class='xui-pickitem--text']"));
+                 Country.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement Timezone=driver.findElement(By.xpath("//div[3]//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//button[1]//div[1]"));
+                 Actions TimeZoneDropdown=new Actions(driver);
+                 TimeZoneDropdown.moveToElement(Timezone).click().build().perform();
+                 
+                 Thread.sleep(3000);
+                 WebElement Time=driver.findElement(By.xpath("//span[contains(text(),'(UTC-08:00) Pacific Time (US & Canada)')]"));
+                 Time.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement JobType=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/input[1]"));
+                 JobType.sendKeys("Accounting");
+                 
+                 Thread.sleep(3000);
+                 WebElement BuyNow=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--secondary xui-button-standard xui-button-medium']"));
+                 BuyNow.click();
+                 
+                 Thread.sleep(10000);
+                 WebElement EstablishedPlan=driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/section[3]/div[1]/label[1]"));
+                 EstablishedPlan.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement ContinuePayment=driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[4]/div[1]/button[1]/span[1]"));
+                 ContinuePayment.click();
+                 
+                 Thread.sleep(2000);
+                 WebElement StreetAddress=driver.findElement(By.xpath("//input[@id='contactAddress']"));
+                 StreetAddress.sendKeys("3450 Granada Ave");
+                 
+                 Thread.sleep(2000);
+                 WebElement city=driver.findElement(By.xpath("//input[@id='contactCity']"));
+                 city.sendKeys("Santa Clara");
+                 
+                 Thread.sleep(2000);
+                 WebElement state=driver.findElement(By.xpath("//div[@id='postalAddress']//button[@class='xui-button xui-select--button xui-button-standard']"));
+                 Actions Statedropdown=new Actions(driver);
+                 Statedropdown.moveToElement(state).click().build().perform();
+                 
+                 Thread.sleep(2000);
+                 WebElement SelectState=driver.findElement(By.xpath("//span[contains(text(),'California')]"));
+                 SelectState.click();
+                 
+                 WebElement ZipCode=driver.findElement(By.xpath("//input[@id='contactPostalCode']"));
+                 ZipCode.sendKeys("95051");
+                 
+                 Thread.sleep(2000);
+                 WebElement ContinueToReview=driver.findElement(By.xpath("//button[@class='xui-button xui-actions--primary xui-button-main']"));
+                 ContinueToReview.click();
+                
+                 Thread.sleep(3000);
+                 WebElement creditcard=driver.findElement(By.xpath("//span[contains(text(),'Credit Card')]"));
+                 creditcard.click();
+                 
+                 Thread.sleep(3000);
+                 WebElement cardnumber=driver.findElement(By.xpath("//div[@id='stripe-card-number']"));
+                 cardnumber.sendKeys("4214 3601 1213 9003");
+                 
+                 Thread.sleep(3000);
+                 WebElement ExpiryDate=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 ExpiryDate.sendKeys("09/25");
+                 
+                 Thread.sleep(3000);
+                 WebElement cvc=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 cvc.sendKeys("123");
+                 
+                 Thread.sleep(3000);
+                 WebElement NameOnCard=driver.findElement(By.xpath("//body[@class='xui-body']/div[@id='react-app']/div/div/div/div/div[@class='xui-page-width-standard']/div[@class='xui-row-grid']/div[@class='xui-column-6-of-12-medium xui-column-6-of-12-wide xui-margin-large']/section[@class='xui-panel xui-panel-layout']/section[1]"));
+                 NameOnCard.sendKeys("John Alexander");
+                 
+                 Thread.sleep(3000);
+                 WebElement ConfirmPurchase=driver.findElement(By.xpath("//span[contains(text(),'Confirm Purchase')]"));
+                 ConfirmPurchase.click();
+                 
+             }
            
            public static void QuickbookUser() throws InterruptedException{
         	   
