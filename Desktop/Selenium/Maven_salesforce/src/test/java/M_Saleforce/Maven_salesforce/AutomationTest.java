@@ -47,14 +47,14 @@ import com.relevantcodes.extentreports.LogStatus;
     enterText(username,"pradeepa.srini-gge5@force.com","Username");
     
     WebElement password=driver.findElement(By.cssSelector("#password"));
-   // enterText(password,"Indiagod@1","Password");
+    //enterText(password,"Indiagod@1","Password");
     enterText(password,"Bujjupappu10","Password");
     
     WebElement login=driver.findElement(By.xpath("//input[@id='Login']"));
     clickButton(login,"Login");
     Thread.sleep(3000);
     
-    WebElement usermenutab=driver.findElement(By.cssSelector("#userNav-arrow"));
+    WebElement usermenutab=driver.findElement(By.xpath("//div[@id='userNavButton']"));
     Actions usermenu=new Actions(driver);
     usermenu.moveToElement(usermenutab).click().build().perform();
     
