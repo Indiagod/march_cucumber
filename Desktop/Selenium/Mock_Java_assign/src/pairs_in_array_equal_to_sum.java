@@ -6,6 +6,7 @@ public class pairs_in_array_equal_to_sum {
 			for(int j=i+1;j<n;j++)
 				if(arr[i]+arr[j]==sum)
 					System.out.println("("+arr[i]+","+arr[j]+")");
+		            System.out.println("The above are the pairs equal to sum");
 	}
 
 	public static void main(String[] args) {
