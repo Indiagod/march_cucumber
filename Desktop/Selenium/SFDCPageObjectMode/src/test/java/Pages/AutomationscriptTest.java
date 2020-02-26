@@ -39,7 +39,8 @@ public class AutomationscriptTest {
 	 }
      
      @Test(priority=3)
-     public static void contacts(){
+     public static void myprofile(){
+    	 
     	 
     	 
     	 
