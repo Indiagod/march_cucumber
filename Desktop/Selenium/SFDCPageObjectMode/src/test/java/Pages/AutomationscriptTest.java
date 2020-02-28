@@ -54,7 +54,7 @@ public class AutomationscriptTest {
     	 ProfilePage.postLink(driver).click();
     	 WebElement outertext=ProfilePage.outertextbox(driver);
     	 driver.switchTo().frame(outertext);
-    	 ProfilePage.textmessage(driver).sendKeys("Hello I am working with salesforce");
+    	 ProfilePage.textmessage(driver).sendKeys("Hello I am working in salesforce");
     	 driver.switchTo().defaultContent();
          
 
