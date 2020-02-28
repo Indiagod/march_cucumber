@@ -3,10 +3,12 @@ package Pages;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.openqa.selenium.interactions.Actions;
 import Pages.SFDCLoginPage;
 
 
@@ -40,10 +42,22 @@ public class AutomationscriptTest {
      
      @Test(priority=3)
      public static void myprofile(){
-    	 
-    	 
-    	 
-    	 
+    	 ProfilePage.usermenu(driver).click();
+    	 ProfilePage.myprofilebutton(driver).click();
+    	 ProfilePage.editprofilebutton(driver).click();
+    	 driver.switchTo().frame("contactInfoContentId");
+    	 ProfilePage.insideframes(driver).click();
+    	 ProfilePage.aboutmeinfotextbox(driver).clear();
+    	 ProfilePage.aboutmeinfotextbox(driver).sendKeys("Pradeepa");
+    	 ProfilePage.saveall(driver).click();
+    	 driver.switchTo().defaultContent();
+    	 ProfilePage.postLink(driver).click();
+    	 WebElement outertext=ProfilePage.outertextbox(driver);
+    	 driver.switchTo().frame(outertext);
+    	 ProfilePage.textmessage(driver).sendKeys("Hello I am working with salesforce");
+    	 driver.switchTo().defaultContent();
+         
+
      }
      
   
