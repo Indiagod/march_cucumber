@@ -17,7 +17,7 @@ public class runnerfileTest {
 	                 features = { "src/test/resource/features/SFDC_Cucu.feature" }, 
 	                 plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"}, 
 	                 monochrome = true,
-	                 tags = {}) 
+	                 tags = {"@RegressionTest"}) 
 
 
 	public class RunCucumberTest extends AbstractTestNGCucumberTests {
